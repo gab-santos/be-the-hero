@@ -1,0 +1,25 @@
+version: "3.7"
+
+services:
+  bth-backend:
+    image: bth-backend
+    build: ./backend
+    container_name: bth-backend
+    command: npm start
+    ports:
+      - "3333:3333"
+    volumes:
+      - ./backend:/usr/app
+
+  bth-frontend:
+    image: bth-frontend
+    build: ./frontend
+    container_name: bth-frontend
+    command: npm start
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./frontend:/usr/app
+    depends_on:
+      - bth-backend
+    tty: true

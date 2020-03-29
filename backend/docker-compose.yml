@@ -1,0 +1,12 @@
+version: "3.7"
+
+services:
+  bth-backend:
+    image: bth-backend
+    build: .
+    container_name: bth-backend
+    command: npm start
+    ports:
+      - "3333:3333"
+    volumes:
+      - .:/usr/app
